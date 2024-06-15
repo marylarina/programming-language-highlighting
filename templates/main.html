@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>подсветочка</title>
+    <style>
+        body {
+            background-color: #212122;
+        }
+        a {
+            color: white;
+            font-family: 'Arial', 'Verdana', sans-serif;
+        }
+        div {
+            display: inline-block;
+            vertical-align: top;
+        }
+        pre {
+            max-height: 465px;
+            margin-top: 0;
+            margin-bottom: 0;
+            overflow-y: scroll;
+            max-width: 550px;
+            white-space: pre-wrap;
+        }
+        .k, .ow, .kc, .kd, .kt, .kn {
+            color: orange;
+        }
+        .sc {
+            color: #1fa72d;
+        }
+        .fm {
+            color: #ea3bd8;
+        }
+        .bp {
+            color: #8d297d;
+        }
+        .nf {
+            color: yellow;
+        }
+        .nb {
+            color: #7e6acf;
+        }
+        .nd{
+            color: #F0FC00;
+        }
+        .mi {
+            color: #6993cf;
+        }
+        .c1 {
+            color: #6c6c6c;
+        }
+        .cp {
+            color: #cf083e;
+        }
+        .s2 {
+            color: green;
+        }
+        #preview {
+            font-size: 20px;
+            color: white;
+        }
+        #textarea {
+            background-color: #687495;
+            color: white;
+            font-size: 20px;
+            resize: none;
+        }
+        button {
+            font-family: 'Arial', 'Verdana', sans-serif;
+            font-size: 21px;
+            font-variant: small-caps;
+        }
+        .glow-on-hover {
+            width: 220px;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: #111;
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+        }
+        .glow-on-hover:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left:-2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 10px;
+        }
+        .glow-on-hover:active {
+            color: #111
+        }
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        select {
+            font-family: 'Arial', 'Verdana', sans-serif;
+            font-size: 21px;
+            font-variant: small-caps;
+            width: 220px;
+            height: 50px;
+            background-color: white;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+        h1 {
+            color: white;
+            font-family: 'Arial', 'Verdana', sans-serif;
+            font-size: 21px;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <h1>Интерфейс для подсветки синтаксиса языка программирования</h1>
+    <form method="POST" id="mainform">
+        <div><textarea name="code" rows="20" cols="45" id="textarea">{{ prev_code }}</textarea></div>
+        <div><pre id="preview">{{ code|safe }}</pre></div>
+        <br>
+        <select name="language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+        </select>
+        <button class="glow-on-hover" type="submit" value="подсветить">подсветить</button>
+    </form>
+    <h3><a href = "/">Вернуться на главную страницу</a></h3>
+    <h3><a href = "about.html">Об авторе</a></h3>
+</body>
+</html>
